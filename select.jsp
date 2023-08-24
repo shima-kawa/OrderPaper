@@ -8,7 +8,7 @@
 </head>
 <body>
     <h2>オーダーを送信するチームを選択してください</h2>
-    <form action="/orderpaper/" method="post">
+    <form action="/orderpaper/registration" method="post">
         <select name="myTeam">
         <% for(int i=0; i<tdto.size(); i++){
             TeamBean tb = tdto.get(i);
