@@ -95,7 +95,7 @@ public class TeamDAO {
         ResultSet rs = null;
         String[] players = new String[8];
         TeamDTO tdto = new TeamDTO();
-        String sql = "SELECT * FROM teams WHERE name = " + name;
+        String sql = "SELECT * FROM teams WHERE name = '" + name + "'";
         try{
             connect();
             // 2.ステートメントを生成
