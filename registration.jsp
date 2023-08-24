@@ -8,9 +8,10 @@
 
 <html>
 <head>
-    <title>選手登録</title>
+    <title>選手登録 | <%= tb.getName() %></title>
 </head>
 <body>
+    <h2><%= tb.getId() %> <%= tb.getName() %>チーム</h2>
     <h2>試合に出場する選手を選択してください</h2>
     <form action="/orderPaper" method="post">
         <table>
