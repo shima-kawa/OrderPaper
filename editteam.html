@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>入力画面</title>
+    </head>
+    <body>
+        <h2>参加チームの情報を更新します</h2>
+        <form action="/orderpaper/editTeam" method="post">
+            ID　<input type="text" name="id"><br>
+            チーム名　<input type="text" name="name"><br>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>名前</th>
+                </tr>
+                <tr>
+                    <td>選手1</td>
+                    <td><input type="text" name="playerName" size="7"></td>
+                </tr>
+                <tr>
+                    <td>選手2</td>
+                    <td><input type="text" name="playerName" size="7"></td>
+                </tr>
+                <tr>
+                    <td>選手3</td>
+                    <td><input type="text" name="playerName" size="7"></td>
+                </tr>
+                <tr>
+                    <td>選手4</td>
+                    <td><input type="text" name="playerName" size="7"></td>
+                </tr>
+                <tr>
+                    <td>選手5</td>
+                    <td><input type="text" name="playerName" size="7"></td>
+                </tr>
+                <tr>
+                    <td>選手6</td>
+                    <td><input type="text" name="playerName" size="7"></td>
+                </tr>
+                <tr>
+                    <td>選手7</td>
+                    <td><input type="text" name="playerName" size="7"></td>
+                </tr>
+                <tr>
+                    <td>選手8</td>
+                    <td><input type="text" name="playerName" size="7"></td>
+                </tr>
+            </table>
+            <input type="submit" name="btn" value="追加">
+            <input type="submit" name="btn" value="修正">
+            <input type="submit" name="btn" value="削除">
+            <input type="submit" name="btn" value="表示">
+        </form>
+    </body>
+</html>
