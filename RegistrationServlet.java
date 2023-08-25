@@ -12,10 +12,14 @@ public class RegistrationServlet extends HttpServlet {
         TeamDAO tdao = new TeamDAO();
         // リクエストの文字コード指定
         req.setCharacterEncoding("utf-8");
-        // 送信情報の取得
-        String name = req.getParameter("myTeam");
+        // 送信情報の取得・セッションオブジェクトに保存
+        HttpSession session = req.getSession(true);
+        String myTeam = (String) session.getAttribute("myTeam");
+        myTeam = req.getParameter("myTeam");
+        session.setAttribute("myTeam", myTeam);
+        
         // 自チームの情報をDTOオブジェクトとして取得
-        TeamDTO tdto = tdao.selectOneTeam(name);
+        TeamDTO tdto = tdao.selectOneTeam(myTeam);
         // 取得した内容をリクエストスコープに格納
         req.setAttribute("tdto", tdto);
         // JSPにフォワード
