@@ -14,9 +14,22 @@
 </head>
 <body>
     <h2><%= tb.getId() %> <%= tb.getName() %>チーム</h2>
-    <h2>試合に出場する選手を登録します</h2>
+    <h2>下記内容を登録します</h2>
+    <h2>ソフトテニス・オーダー票</h2>
     <table>
-        <tr><th>試合番号</th><th>後衛サイド</th><th>前衛サイド</th></tr>
+        <tr>
+            <td>No.</td>
+            <td>チーム名</td>
+        </tr>
+        <tr>
+            <td><%= tb.getId() %></td>
+            <td><%= tb.getName() %></td>
+        </tr>
+    </table>
+    <p>第　　　回戦</P>
+    <p>対　　　　　　戦用</p>
+    <table>
+        <!---- <tr><th>試合番号</th><th>後衛サイド</th><th>前衛サイド</th></tr> --->
         <% for(int i=0; i<3; i++){%>
             <tr>
                 <td><%= i+1 %></td>
