@@ -52,7 +52,7 @@ public class CortDAO {
         Statement stmt = null;
         ResultSet rs = null;
         CortDTO cdto = new CortDTO();
-        String sql = "SELECT * FROM corts FROM cortId";
+        String sql = "SELECT * FROM corts WHERE id = " + cortId;
         try{
             connect();
             // 2.ステートメントを生成
