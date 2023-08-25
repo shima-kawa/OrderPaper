@@ -7,6 +7,23 @@
     </head>
     <body>
         <h2>コート別の全試合の情報は次の通りです。</h2>
+        <table border="1">
+            <tr>
+                <% for(int corti = 0; corti<mcdto.size(); corti++){ %>
+                    <th><%= corti+1 %>コート</th>
+                <% } %>
+            </tr>
+            <% for(int tate=0; tate<10; tate++){ %> <%---- TODO: for文の回数上限の指定 -----%>
+                <tr align="center">
+                    <% for(int corti = 0; corti<mcdto.size(); corti++){ %>
+                        <% if(tate >= mcdto.get(corti).size()){ %>
+                            <td></td>
+                        <% continue; }%>
+                        <td align="center"><%= mcdto.get(corti).get(tate).getA() %>-<%= mcdto.get(corti).get(tate).getB() %></td>
+                    <% } %>
+                </tr>
+            <% } %>
+        </table>
         <% for(int tablei=0; tablei<mcdto.size(); tablei++){
             MatchDTO mdto = mcdto.get(tablei);
         %>
