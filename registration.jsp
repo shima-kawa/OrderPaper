@@ -13,7 +13,7 @@
 <body>
     <h2><%= tb.getId() %> <%= tb.getName() %>チーム</h2>
     <h2>試合に出場する選手を選択してください</h2>
-    <form action="/orderPaper" method="post">
+    <form action="/orderpaper/checkmembers" method="post">
         <table>
             <tr><th>試合番号</th><th>後衛サイド</th><th>前衛サイド</th></tr>
             <% for(int i=0; i<3; i++){%>
@@ -22,13 +22,14 @@
                 <% for(int j=0; j<2; j++){ %>
                     <td><select name="player" size="1">
                     <% for(int k=0; k<players.length; k++){ %>
-                        <option value="player<%= k+1 %>"><%= players[k] %></option>
+                        <option value="<%= k %>"><%= players[k] %></option>
                     <% } %>
                     </select></td>
                 <% } %>
                 </tr>
             <% } %>
         </table>
+        <input type="submit" value="送信">
     </form>
 </body>
 </html>
