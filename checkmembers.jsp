@@ -1,19 +1,21 @@
 <%@page contentType="text/html;charset=utf8" %>
 <%@page import="bean.*" %>
 <jsp:useBean id="midb" scope="request" class="bean.MemberIdBean" />
-<jsp:useBean id="tdto" scope="request" class="bean.TeamDTO" />
+<jsp:useBean id="mytdto" scope="request" class="bean.TeamDTO" />
+<jsp:useBean id="opponenttdto" scope="request" class="bean.TeamDTO" />
 <%
-    TeamBean tb = tdto.get(0);
-    String[] players = tb.getPlayers();
+    TeamBean mytb = mytdto.get(0);
+    TeamBean opponenttb = opponenttdto.get(0);
+    String[] players = mytb.getPlayers();
     int[] memberId = midb.getMemberId();
 %>
 
 <html>
 <head>
-    <title>選手確認 | <%= tb.getName() %></title>
+    <title>選手確認 | <%= mytb.getName() %></title>
 </head>
 <body>
-    <h2><%= tb.getId() %> <%= tb.getName() %>チーム</h2>
+    <h2><%= mytb.getId() %> <%= mytb.getName() %>チーム</h2>
     <h2>下記内容を登録します</h2>
     <h2>ソフトテニス・オーダー票</h2>
     <table>
@@ -22,12 +24,12 @@
             <td>チーム名</td>
         </tr>
         <tr>
-            <td><%= tb.getId() %></td>
-            <td><%= tb.getName() %></td>
+            <td><%= mytb.getId() %></td>
+            <td><%= mytb.getName() %></td>
         </tr>
     </table>
     <p>第　　　回戦</P>
-    <p>対　　　　　　戦用</p>
+    <p><u>対　<%= opponenttb.getName() %>　戦用</u></p>
     <table>
         <!---- <tr><th>試合番号</th><th>後衛サイド</th><th>前衛サイド</th></tr> --->
         <% for(int i=0; i<3; i++){%>

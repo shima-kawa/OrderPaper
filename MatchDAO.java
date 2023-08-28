@@ -118,6 +118,40 @@ public class MatchDAO {
         return mdto;
     }
 
+    public MatchDTO selectWhereMatchId(int matchId){
+        Statement stmt = null;
+        ResultSet rs = null;
+        MatchDTO mdto = new MatchDTO();
+        String sql = "SELECT * FROM matches WHERE id = " + matchId;
+        try{
+            connect();
+            // 2.ステートメントを生成
+            stmt = con.createStatement();
+            // 3.SQLを実行
+            rs = stmt.executeQuery(sql);
+            // 4.検索結果の処理
+            while(rs.next()){
+                MatchBean mb = new MatchBean();
+                mb.setId(rs.getInt("id"));
+                mb.setcort(rs.getInt("cort"));
+                mb.setA(rs.getInt("A"));
+                mb.setB(rs.getInt("B"));
+                mdto.add(mb);
+            } 
+        }catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            try{
+                if(rs != null) rs.close();
+                if(stmt != null) stmt.close();
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        disconnect();
+        return mdto;
+    }
+
     public int insert(int id, int cort, int a, int b){
         String sql = "INSERT INTO matches VALUES (" + id + ", " + cort + ", " + a + ", " + b + ")";
         return executeSql(sql);
