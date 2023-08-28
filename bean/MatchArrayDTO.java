@@ -3,10 +3,10 @@ package bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MatchAndCortDTO implements Serializable{
+public class MatchArrayDTO implements Serializable{
     private ArrayList<MatchDTO> list;
 
-    public MatchAndCortDTO(){
+    public MatchArrayDTO(){
         list = new ArrayList<MatchDTO>();
     }
     public void add (MatchDTO mdto){

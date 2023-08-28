@@ -14,15 +14,15 @@ public class ShowMatchesByCortServlet extends HttpServlet{
         // 全体検索した結果をDTOオブジェクトとして取得
         CortDTO cdto = cdao.select();
         // 全試合をコートごとに格納するオブジェクトの生成
-        MatchAndCortDTO mcdto = new MatchAndCortDTO();
+        MatchArrayDTO madto = new MatchArrayDTO();
         // 全てのコートごとに試合を検索
         for(int i=0; i<cdto.size(); i++){
             CortBean cb = cdto.get(i);
             MatchDTO mdto = mdao.select(cb.getId());
-            mcdto.add(mdto);
+            madto.add(mdto);
         }
         // 検索結果をリクエストスコープに格納
-        req.setAttribute("mcdto", mcdto);
+        req.setAttribute("madto", madto);
         // JSPにフォワード
         RequestDispatcher rd = req.getRequestDispatcher("/showmatchesbycort.jsp");
         rd.forward(req, res);

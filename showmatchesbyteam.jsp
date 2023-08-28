@@ -1,33 +1,37 @@
 <%@page contentType="text/html;charset=utf8" %>
 <%@page import="bean.*" %>
 <jsp:useBean id="madto" scope="request" class="bean.MatchArrayDTO" />
+<jsp:useBean id="tdto" scope="request" class="bean.TeamDTO" />
 <html>
     <head>
         <title>表示画面</title>
     </head>
     <body>
-        <h2>コート別の全試合の情報は次の通りです。</h2>
+        <h2>チーム別の全試合の情報は次の通りです。</h2>
+        <%---
         <table border="1">
             <tr>
-                <% for(int corti = 0; corti<madto.size(); corti++){ %>
-                    <th><%= corti+1 %>コート</th>
+                <% for(int teami = 0; teami<madto.size(); teami++){ %>
+                    <th><%= tdto.get(teami).getName() %>チーム</th>
                 <% } %>
             </tr>
-            <% for(int tate=0; tate<10; tate++){ %> <%---- TODO: for文の回数上限の指定 -----%>
+            <% for(int tate=0; tate<10; tate++){ %> 
                 <tr align="center">
-                    <% for(int corti = 0; corti<madto.size(); corti++){ %>
-                        <% if(tate >= madto.get(corti).size()){ %>
+                    <% for(int teami = 0; teami<madto.size(); teami++){ %>
+                        <% if(tate >= madto.get(teami).size()){ %>
                             <td></td>
                         <% continue; }%>
-                        <td align="center"><%= madto.get(corti).get(tate).getA() %>-<%= madto.get(corti).get(tate).getB() %></td>
+                        <td align="center"><%= madto.get(teami).get(tate).getA() %>-<%= madto.get(teami).get(tate).getB() %></td>
                     <% } %>
                 </tr>
             <% } %>
         </table>
+        ---%>
         <% for(int tablei=0; tablei<madto.size(); tablei++){
+            TeamBean tb = tdto.get(tablei);
             MatchDTO mdto = madto.get(tablei);
         %>
-            <h3>第<%= tablei+1 %>コート</h3>
+            <h3>id:<%= tb.getId() %>,<%= tb.getName() %>チーム</h3>
             <table border="1">
                 <tr>
                     <th>ID</th>
