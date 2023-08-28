@@ -8,18 +8,19 @@ import bean.*;
 public class RegistrationServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
 
+        int myTeamId;
+
         // DAOオブジェクトを生成
         TeamDAO tdao = new TeamDAO();
         // リクエストの文字コード指定
         req.setCharacterEncoding("utf-8");
         // 送信情報の取得・セッションオブジェクトに保存
         HttpSession session = req.getSession(true);
-        String myTeam = (String) session.getAttribute("myTeam");
-        myTeam = req.getParameter("myTeam");
-        session.setAttribute("myTeam", myTeam);
+        myTeamId = Integer.parseInt(req.getParameter("myTeamId"));
+        session.setAttribute("myTeamId", myTeamId);
         
-        // 自チームの情報をDTOオブジェクトとして取得
-        TeamDTO tdto = tdao.selectOneTeam(myTeam);
+        // 自チームのIDをDTOオブジェクトとして取得
+        TeamDTO tdto = tdao.selectOneTeam(myTeamId);
         // 取得した内容をリクエストスコープに格納
         req.setAttribute("tdto", tdto);
         // JSPにフォワード

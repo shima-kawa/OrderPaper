@@ -9,11 +9,11 @@
 <body>
     <h2>オーダーを送信するチームを選択してください</h2>
     <form action="/orderpaper/registration" method="post">
-        <select name="myTeam">
+        <select name="myTeamId">
         <% for(int i=0; i<tdto.size(); i++){
             TeamBean tb = tdto.get(i);
         %>
-            <option><%= tb.getName() %></option>
+            <option value="<%= tb.getId() %>"><%= tb.getName() %></option>
         <% } %>
         </select>
         <input type="submit" value="送信">

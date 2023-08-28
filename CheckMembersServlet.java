@@ -22,11 +22,11 @@ public class CheckMembersServlet extends HttpServlet{
 
         // セッションOBからmyTeamの取得
         HttpSession session = req.getSession(true);
-        String myTeam = (String)session.getAttribute("myTeam");
+        int myTeamId = (int)session.getAttribute("myTeamId");
 
         // DB関係
         TeamDAO tdao = new TeamDAO();
-        TeamDTO tdto = tdao.selectOneTeam(myTeam);
+        TeamDTO tdto = tdao.selectOneTeam(myTeamId);
 
         // リクエストスコープに格納
         req.setAttribute("midb", midb);
