@@ -152,6 +152,80 @@ public class MatchDAO {
         return mdto;
     }
 
+    public MatchAndResultDTO selectMatchesAndResults(){
+        Statement stmt = null;
+        ResultSet rs = null;
+        MatchAndResultDTO mrdto = new MatchAndResultDTO();
+        String sql = "SELECT matches.id, cort, a, b, winner, gamecountA, gamecountB FROM matches LEFT OUTER JOIN results ON matches.id=results.id";
+        try{
+            connect();
+            // ステートメントを生成
+            stmt = con.createStatement();
+            // SQL実行
+            rs = stmt.executeQuery(sql);
+            // 検索結果の処理
+            while (rs.next()) {
+                MatchAndResultBean mrb = new MatchAndResultBean();
+                mrb.setId(rs.getInt("id"));
+                mrb.setcort(rs.getInt("cort"));
+                mrb.setA(rs.getInt("a"));
+                mrb.setB(rs.getInt("b"));
+                mrb.setWinner(rs.getInt("winner"));
+                mrb.setGamecountA(rs.getInt("gamecountA"));
+                mrb.setGamecountB(rs.getInt("gamecountB"));
+                mrdto.add(mrb);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            try{
+                if(rs != null) rs.close();
+                if(stmt != null) stmt.close();
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        disconnect();
+        return mrdto;
+    }
+
+    public MatchAndResultDTO selectMatchesAndResultsWhereCortId(int cortid){
+        Statement stmt = null;
+        ResultSet rs = null;
+        MatchAndResultDTO mrdto = new MatchAndResultDTO();
+        String sql = "SELECT matches.id, cort, a, b, winner, gamecountA, gamecountB FROM matches LEFT OUTER JOIN results ON matches.id=results.id WHERE cort=" + cortid;
+        try{
+            connect();
+            // ステートメントを生成
+            stmt = con.createStatement();
+            // SQL実行
+            rs = stmt.executeQuery(sql);
+            // 検索結果の処理
+            while (rs.next()) {
+                MatchAndResultBean mrb = new MatchAndResultBean();
+                mrb.setId(rs.getInt("id"));
+                mrb.setcort(rs.getInt("cort"));
+                mrb.setA(rs.getInt("a"));
+                mrb.setB(rs.getInt("b"));
+                mrb.setWinner(rs.getInt("winner"));
+                mrb.setGamecountA(rs.getInt("gamecountA"));
+                mrb.setGamecountB(rs.getInt("gamecountB"));
+                mrdto.add(mrb);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            try{
+                if(rs != null) rs.close();
+                if(stmt != null) stmt.close();
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        disconnect();
+        return mrdto;
+    }
+    
     public int insert(int id, int cort, int a, int b){
         String sql = "INSERT INTO matches VALUES (" + id + ", " + cort + ", " + a + ", " + b + ")";
         return executeSql(sql);
