@@ -51,7 +51,7 @@
                             <td></td>
                         <% continue; }%>
                         <% if(mrArrayDto.get(corti).get(tate).getWinner() == 0){ %>
-                            <td align="center"><%= mrArrayDto.get(corti).get(tate).getA() %>-<%= mrArrayDto.get(corti).get(tate).getB() %></td>
+                            <td align="center"><a href="registeResult?matchId=<%= mrArrayDto.get(corti).get(tate).getId() %>"><%= mrArrayDto.get(corti).get(tate).getA() %>-<%= mrArrayDto.get(corti).get(tate).getB() %></a></td>
                         <% }else{ %>
                             <td align="center" class="finished"><%= mrArrayDto.get(corti).get(tate).getA() %>-<%= mrArrayDto.get(corti).get(tate).getB() %></td>
                         <% } %>

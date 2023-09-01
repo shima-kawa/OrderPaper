@@ -5,7 +5,6 @@ import javax.servlet.annotation.*;
 
 import bean.MatchBean;
 import bean.MatchDTO;
-import bean.MemberIdBean;
 import bean.ResultBean;
 import bean.TeamDTO;
 
