@@ -1,13 +1,13 @@
 <%@page contentType="text/html;charset=utf8" %>
 <%@page import="bean.*" %>
-<jsp:useBean id="midb" scope="request" class="bean.MemberIdBean" />
+<jsp:useBean id="rb" scope="request" class="bean.RegistrationBean" />
 <jsp:useBean id="mytdto" scope="request" class="bean.TeamDTO" />
 <jsp:useBean id="opponenttdto" scope="request" class="bean.TeamDTO" />
 <%
     TeamBean mytb = mytdto.get(0);
     TeamBean opponenttb = opponenttdto.get(0);
     String[] players = mytb.getPlayers();
-    int[] memberId = midb.getMemberId();
+    int[] memberId = rb.getMemberId();
 %>
 
 <html>
@@ -40,5 +40,9 @@
             </tr>
         <% } %>
     </table>
+    <form action="/orderpaper/registeDB" method="post">
+        <button type="button" onclick="history.back()">戻る</button>
+        <input type="submit" value="登録">
+    </form>
 </body>
 </html>
