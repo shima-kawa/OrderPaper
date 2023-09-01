@@ -85,8 +85,12 @@ public class ResultDAO {
     }
 
 
-    public int update(int id, String name){
-        String sql = "UPDATE results SET id = " + id + ", name = '" + name + "' WHERE id = " + id;
+    public int insert(int id, int winner, int gamecountA, int gamecountB){
+        String sql ="INSERT INTO results VALUES(" + id + ", " + winner + ", " + gamecountA + ", "+ gamecountB + ")";
+        return executeSql(sql);
+    }
+    public int update(int id, int winner, int gamecountA, int gamecountB){
+        String sql = "UPDATE results SET id = " + id + ", winner = " + winner + ", gamecountA = "+ gamecountA + ", gamecountB = "+ gamecountB + " WHERE id = " + id;
         return executeSql(sql);
     }
 
