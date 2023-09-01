@@ -32,7 +32,7 @@
                     <td align="center"><%= tb.getName() %></td>
                     <% for(int memi=0; memi < memberId.length; memi++){ %>
                         <td align="center"><%= memberId[memi] %></td>
-                        <td align="center"><%= memberName[memberId[memi]] %></td>
+                        <td align="center"><%= memberName[memi] %></td>
                     <% } %>
                 </tr>
             <% } %>

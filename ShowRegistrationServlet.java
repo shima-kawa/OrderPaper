@@ -5,7 +5,7 @@ import javax.servlet.annotation.*;
 import bean.RegistrationDTO;
 import bean.TeamDTO;
 
-@WebServlet("/showRegistrations")
+@WebServlet("/showRegistration")
 public class ShowRegistrationServlet extends HttpServlet{
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
 

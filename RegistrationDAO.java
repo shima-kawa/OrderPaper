@@ -53,14 +53,7 @@ public class RegistrationDAO {
         return rdto;
     }
 
-    public int insert(int match_id, int team_id, int[] memberId){
-        String sql = "INSERT INTO registrations VALUES (" + match_id + ", " + team_id + "";
-        for(int i=0; i<memberId.length; i++){
-            sql = sql + ", " + memberId[i] + "";
-        }
-        sql = sql + ")";
-        return executeSql(sql);
-    }
+
 
     public int update(int match_id, int team_id, int[] memberId){
         String sql = "UPDATE registrations SET match_id = " + match_id + ", team_id = " + team_id;
