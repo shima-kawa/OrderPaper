@@ -4,10 +4,11 @@
 <jsp:useBean id="mrArrayDto" scope="request" class="bean.MatchAndResultArrayDTO" />
 <html>
     <head>
+        <link rel="stylesheet" href="css/sty.css">
         <title>表示画面</title>
     </head>
     <body>
-        <h2>全試合の結果は次の通りです。</h2>
+        <h2>全試合の結果は次の通りです。（終了済み試合一覧）</h2>
         <table border="1">
             <tr>
                 <th>ID</th>
@@ -49,7 +50,11 @@
                         <% if(tate >= mrArrayDto.get(corti).size()){ %>
                             <td></td>
                         <% continue; }%>
-                        <td align="center"><%= mrArrayDto.get(corti).get(tate).getA() %>-<%= mrArrayDto.get(corti).get(tate).getB() %></td>
+                        <% if(mrArrayDto.get(corti).get(tate).getWinner() == 0){ %>
+                            <td align="center"><%= mrArrayDto.get(corti).get(tate).getA() %>-<%= mrArrayDto.get(corti).get(tate).getB() %></td>
+                        <% }else{ %>
+                            <td align="center" class="finished"><%= mrArrayDto.get(corti).get(tate).getA() %>-<%= mrArrayDto.get(corti).get(tate).getB() %></td>
+                        <% } %>
                     <% } %>
                 </tr>
             <% } %>

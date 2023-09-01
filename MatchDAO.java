@@ -225,7 +225,7 @@ public class MatchDAO {
         disconnect();
         return mrdto;
     }
-    
+
     public int insert(int id, int cort, int a, int b){
         String sql = "INSERT INTO matches VALUES (" + id + ", " + cort + ", " + a + ", " + b + ")";
         return executeSql(sql);
