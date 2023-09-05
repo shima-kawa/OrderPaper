@@ -4,7 +4,7 @@
 <jsp:useBean id="tdtoForForward" scope="request" class="bean.TeamDTO" />
 <html>
     <head>
-        <title>表示画面</title>
+        <title>送信済みオーダー一覧</title>
     </head>
     <body>
         <h2>送信されたオーダーは次の通りです。</h2>

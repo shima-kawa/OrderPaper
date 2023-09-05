@@ -3,7 +3,7 @@
 <jsp:useBean id="cdto" scope="request" class="bean.CortDTO" />
 <html>
     <head>
-        <title>表示画面</title>
+        <title>コート一覧</title>
     </head>
     <body>
         <h2>全コートの情報は次の通りです。</h2>

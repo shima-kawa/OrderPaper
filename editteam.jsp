@@ -4,7 +4,7 @@
 <jsp:useBean id="msg" scope="request" class="java.lang.String" />
 <html>
     <head>
-        <title>表示画面</title>
+        <title>チーム一覧</title>
     </head>
     <body>
         <h2><%= msg %></h2>

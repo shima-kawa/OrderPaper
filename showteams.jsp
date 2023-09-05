@@ -3,7 +3,7 @@
 <jsp:useBean id="tdto" scope="request" class="bean.TeamDTO" />
 <html>
     <head>
-        <title>表示画面</title>
+        <title>チーム一覧</title>
     </head>
     <body>
         <h2>参加選手の情報は次の通りです。</h2>

@@ -3,7 +3,7 @@
 <jsp:useBean id="madto" scope="request" class="bean.MatchArrayDTO" />
 <html>
     <head>
-        <title>表示画面</title>
+        <title>コート別試合一覧</title>
     </head>
     <body>
         <h2>コート別の全試合の情報は次の通りです。</h2>

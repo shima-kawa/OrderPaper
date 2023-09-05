@@ -3,7 +3,7 @@
 <jsp:useBean id="mdto" scope="request" class="bean.MatchDTO" />
 <html>
     <head>
-        <title>表示画面</title>
+        <title>試合一覧</title>
     </head>
     <body>
         <h2>全試合の情報は次の通りです。</h2>

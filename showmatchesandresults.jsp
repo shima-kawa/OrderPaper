@@ -5,7 +5,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="css/sty.css">
-        <title>表示画面</title>
+        <title>試合結果一覧</title>
     </head>
     <body>
         <h2>全試合の結果は次の通りです。（終了済み試合一覧）</h2>

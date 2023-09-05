@@ -4,7 +4,7 @@
 <jsp:useBean id="tdto" scope="request" class="bean.TeamDTO" />
 <html>
     <head>
-        <title>表示画面</title>
+        <title>チーム別試合一覧</title>
     </head>
     <body>
         <h2>チーム別の全試合の情報は次の通りです。</h2>

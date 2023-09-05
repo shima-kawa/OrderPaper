@@ -3,7 +3,7 @@
 <jsp:useBean id="rdto" scope="request" class="bean.ResultDTO" />
 <html>
     <head>
-        <title>表示画面</title>
+        <title>試合結果一覧</title>
     </head>
     <body>
         <h2>全試合の情報は次の通りです。</h2>
