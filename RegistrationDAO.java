@@ -53,6 +53,43 @@ public class RegistrationDAO {
         return rdto;
     }
 
+    public RegistrationDTO selectWhereMatchId(int matchId){
+        Statement stmt = null;
+        ResultSet rs = null;
+        RegistrationDTO rdto = new RegistrationDTO();
+        String sql = "SELECT * FROM registrations WHERE match_id = " + matchId;
+        try{
+            connect();
+            // 2.ステートメントを生成
+            stmt = con.createStatement();
+            // 3.SQLを実行
+            rs = stmt.executeQuery(sql);
+            // 4.検索結果の処理
+            while(rs.next()){
+                int[] members = new int[6];
+                RegistrationBean rb = new RegistrationBean();
+                rb.setMatchId(rs.getInt("match_id"));
+                rb.setTeamId(rs.getInt("team_id"));
+                for(int i=0; i<6; i++){
+                    members[i] = rs.getInt("player"+(i+1));
+                }
+                rb.setMemberId(members);
+                rdto.add(rb);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            try{
+                if(rs != null) rs.close();
+                if(stmt != null) stmt.close();
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        disconnect();
+        return rdto;
+    }
+
     public int insert(int match_id, int team_id, int[] memberId){
         String sql = "INSERT INTO registrations VALUES (" + match_id + ", " + team_id + "";
         for(int i=0; i<memberId.length; i++){

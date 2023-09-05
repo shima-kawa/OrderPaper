@@ -1,0 +1,291 @@
+.judge-paper-title {
+    text-align: center;
+    margin-bottom: 0;
+    padding-top: 10%;
+    font-size: 15px;
+}
+
+.judge-paper-header, .judge-paper-main, .judge-paper-footer {
+    margin: auto;
+    text-align: center;
+    font-size:10px;
+    width: 82%;
+    border-collapse: collapse;
+    border-left: 2.5px solid;
+    border-right: 2.5px solid;
+}
+
+.judge-paper-header {
+    border-top: 2.5px solid;
+}
+
+.judge-paper-main {
+    border-top: 2px solid;
+}
+
+.judge-paper-footer {
+    border-top: 2.5px solid;
+    border-bottom: 2.5px solid;
+}
+
+.judge-paper-header td, .judge-paper-main td, .judge-paper-footer td{
+    border: solid 1px;
+}
+
+.judge-paper-tr-1 td,
+.judge-paper-tr-2 td,
+.judge-paper-tr-3 td,
+.judge-paper-tr-4 td,
+.judge-paper-tr-5 td {
+    border: 2px solid;
+}
+
+.judge-paper-tr-1, .judge-paper-tr-2{
+    height: 50px;
+}
+
+.judge-paper-tr-1 td, .judge-paper-tr-2 td{
+    padding: 5px;
+    position: relative;
+    width: 25%;
+}
+
+.judge-paper-tr-1-type {
+    text-align: left;
+}
+
+.judge-paper-tr-1-type-male {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.judge-paper-tr-1-type-female {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.judge-paper-tr-1-cort, .judge-paper-tr-2-match{
+    position: relative;
+}
+
+.judge-paper-tr-1-cort-left, .judge-paper-tr-2-match-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.judge-paper-tr-1-cort-right, .judge-paper-tr-2-match-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.judge-paper-tr-1-position, .judge-paper-tr-2-position{
+    padding: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.judge-paper-tr-2 td {
+    border-bottom: none; /* headerとmainのつなぎ目の枠線かぶりを解消 */
+}
+
+.judge-paper-tr-3 {
+    height: 50px;
+}
+.judge-paper-tr-3 {
+    height: 50px;
+}
+
+.judge-paper-tr-4 {
+    height: 54px;
+}
+
+.judge-paper-player {
+    writing-mode: vertical-rl;
+}
+
+.judge-paper-tr-5 {
+    height: 39px; /* 55pxからtr-6分を引く必要がある */
+}
+
+.judge-paper-tr-6{
+    height: 15px;
+}
+
+.judge-paper-tr-7{
+    border-top: 2.5px solid;
+}
+
+.judge-paper-tr-7 td:nth-child(2n+8):nth-child(-n+16) {
+    border-right: 2px solid;
+}
+.judge-paper-tr-7 td:nth-child(2n+25):nth-child(-n+38) {
+    border-right: 2px solid;
+}
+
+.judge-paper-tr-8{
+}
+
+.judge-paper-tr-8 td:nth-child(even) {
+    border-right: 2px solid;
+}
+
+.judge-paper-tr-9{
+    border-top: 2.5px solid;
+}
+
+.judge-paper-tr-9 td:nth-child(4n+3):nth-child(-n+16)::after,
+.judge-paper-tr-9 td:nth-child(4n+4):nth-child(-n+16)::after,
+.judge-paper-tr-9 td:nth-child(4n+22):nth-child(-n+33)::after,
+.judge-paper-tr-9 td:nth-child(4n+23):nth-child(-n+33)::after,
+.judge-paper-tr-10 td:nth-child(4n):nth-child(-n+28)::after,
+.judge-paper-tr-10 td:nth-child(4n-1):nth-child(-n+28)::after,
+.judge-paper-tr-11 td:nth-child(4n-3):nth-child(-n+28)::after,
+.judge-paper-tr-11 td:nth-child(4n-2):nth-child(-n+28)::after {
+    content: "*";
+    font-size: 5px;
+    position: absolute;
+    top: -2px;
+    right: 0;
+}
+
+.judge-paper-tr-9 td:nth-child(4n):nth-child(-n+16),
+.judge-paper-tr-9 td:nth-child(4n+21):nth-child(-n+33),
+.judge-paper-tr-10 td:nth-child(4n):nth-child(-n+14),
+.judge-paper-tr-10 td:nth-child(4n+14):nth-child(-n+28),
+.judge-paper-tr-11 td:nth-child(4n-2):nth-child(-n+14),
+.judge-paper-tr-11 td:nth-child(4n+16):nth-child(-n+28) {
+    border-right: 2px solid;
+}
+
+.judge-paper-tr-12 td {
+    border-top: 2.5px solid;
+    border-left: 2px solid;
+    border-right: 2px solid;
+    border-bottom: 2px solid;
+}
+
+.judge-paper-tr-13 {
+    height: 30px;
+}
+
+.judge-paper-tr-13 td{
+    border-bottom: none; /* mainとfooterのつなぎ目の枠線かぶりを解消 */
+    border-top: 2px solid;
+    border-left: 2px solid;
+    border-right: 2px solid;
+}
+
+.judge-paper-tr-13 td:nth-child(5),
+.judge-paper-tr-13 td:nth-child(6) {
+    border-top: none; /* タイムのところ */
+}
+
+.judge-paper-tr-14 {
+    height: 40px;
+}
+
+.judge-paper-tr-14 td{
+    border: 2px solid;
+}
+
+.judge-paper-tr-14 td:nth-child(1),
+.judge-paper-tr-14 td:nth-child(3),
+.judge-paper-tr-14 td:nth-child(4),
+.judge-paper-tr-14 td:nth-child(5),
+.judge-paper-tr-14 td:nth-child(7),
+.judge-paper-tr-14 td:nth-child(9) {
+    width: 7.875%;
+}
+.judge-paper-tr-14 td:nth-child(2),
+.judge-paper-tr-14 td:nth-child(6),
+.judge-paper-tr-14 td:nth-child(8),
+.judge-paper-tr-14 td:nth-child(10) {
+    width: 13.125%;
+}
+
+#judge-paper-score-title {
+    width: 16%;
+    border-bottom: none;
+}
+
+#judge-paper-score {
+    width: 16%;
+    border-top: none;
+}
+
+#judge-paper-gamecount-1,
+#judge-paper-gamecount-2,
+#judge-paper-gamecount-3,
+#judge-paper-gamecount-4,
+#judge-paper-gamecount-5,
+#judge-paper-gamecount-6,
+#judge-paper-gamecount-7,
+#judge-paper-gamecount-8,
+#judge-paper-gamecount-f{
+    border-left: 2.5px solid;
+    border-right: 2.5px solid;
+}
+
+.judge-paper-S {
+    width: 2.625%;
+    border-right: none!important;
+}
+
+.judge-paper-R {
+    width: 2.625%;
+    border-left: none!important;
+    border-right: 2px solid!important;
+}
+
+.judge-paper-point, .judge-paper-point-deuce {
+    width: 2.625%;
+    height: 24px;
+    position: relative;
+}
+
+.judge-paper-time {
+    text-align: left;
+    letter-spacing: 5px;
+    padding-left: 10px;
+    border-bottom: none!important;
+}
+
+.judge-paper-applicable {
+    font-size: 15px;
+    transform:scale(0.6);
+}
+
+.judge-paper-organization {
+    text-align: center;
+    margin-top: 0;
+    font-size: 15px;
+}
+
+
+.sheet {
+    width: 210mm;
+    height: 296mm;
+    page-break-after: always;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+/* プレビュー用のスタイル */
+@media screen {
+    body {
+        background: #eee;
+    }
+    .sheet {
+        background: white;
+        box-shadow: 0 .5mm 2mm rgba(0, 0, 0, .3);
+        margin: 5mm;
+    }
+}
