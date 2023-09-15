@@ -81,13 +81,59 @@ public class CortDAO {
     }
 
     public int insert(int id, String name){
-        String sql = "INSERT INTO corts VALUES (" + id + ", '" + name + "')";
-        return executeSql(sql);
+
+        PreparedStatement pstmt = null;
+        int result = 0;
+        String sql = "INSERT INTO corts VALUES (?, ?)";
+
+        try {
+            connect();
+            // make the statement
+            pstmt = con.prepareStatement(sql);
+            // execute the SQL
+            pstmt.setInt(1, id);
+            pstmt.setString(2, name);
+            result = pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally{
+            try {
+                if(pstmt != null) pstmt.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        disconnect();
+        return result;
+
     }
 
     public int update(int id, String name){
-        String sql = "UPDATE corts SET id = " + id + ", name = '" + name + "' WHERE id = " + id;
-        return executeSql(sql);
+        PreparedStatement pstmt = null;
+        int result = 0;
+        String sql = "UPDATE corts SET id = ?, name = '?' WHERE id = ?";
+
+        try {
+            connect();
+            // make the statement
+            pstmt = con.prepareStatement(sql);
+            // execute the SQL
+            pstmt.setInt(1, id);
+            pstmt.setString(2, name);
+            pstmt.setInt(3, id);
+            result = pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally{
+            try {
+                if(pstmt != null) pstmt.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        disconnect();
+        return result;
+
     }
 
     public int delete(int id){
