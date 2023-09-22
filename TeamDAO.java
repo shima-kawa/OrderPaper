@@ -128,6 +128,52 @@ public class TeamDAO {
         disconnect();
         return tdto;
     }
+
+    public TeamDTO selectWhereLeageId(int leagueId){
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        TeamDTO tdto = new TeamDTO();
+        String[] players = new String[8];
+        String sql = "SELECT * FROM teams INNER JOIN team_league_relations ON teams.id = team_league_relations.team_id WHERE team_league_relations.league_id = ?";
+        /* 
+            SELECT * FROM teams
+            INNER JOIN team_league_relations
+                ON teams.id = team_league_relations.team_id
+            WHERE team_league_relations.league_id = ?;
+        */
+        
+        try {
+            connect();
+            // make stateante
+            pstmt = con.prepareStatement(sql);
+            // execute SQL
+            pstmt.setInt(1, leagueId);
+            rs = pstmt.executeQuery();
+            // process for serched result
+            while (rs.next()) {
+                TeamBean tb = new TeamBean();
+                tb.setId(rs.getInt("id"));
+                tb.setName(rs.getString("name"));
+                for(int i=1; i<=8; i++){
+                    players[i-1] = rs.getString("player"+i);
+                }
+                tb.setPlayers(players);
+                tdto.add(tb);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally{
+            try {
+                if(rs != null) rs.close();
+                if(pstmt != null) pstmt.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        disconnect();
+        return tdto;
+    }
+
     public int insert(int id, String name, String[] players){
         PreparedStatement pstmt = null;
         int result = 0;
