@@ -226,6 +226,45 @@ public class MatchDAO {
         return mrdto;
     }
 
+    public MatchDTO selectWhereLeagueIdAndLeagueChildId(int leagueId, int childId){
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        MatchDTO mdto = new MatchDTO();
+        // tests.sql参照
+        String sql ="SELECT * FROM matches INNER JOIN match_league_relations ON matches.id = match_league_relations.match_id INNER JOIN leagues ON match_league_relations.league_id = leagues.league_id WHERE leagues.league_id = ? AND a = (SELECT teams.id FROM teams INNER JOIN team_league_relations ON teams.id = team_league_relations.team_id WHERE league_id=? AND team_league_relations.league_child_id=?) AND b = (SELECT teams.id FROM teams INNER JOIN team_league_relations ON teams.id = team_league_relations.team_id WHERE league_id=? AND team_league_relations.league_child_id=?)";
+        try{
+            connect();
+            // ステートメントを生成
+            pstmt = con.prepareStatement(sql);
+            // SQL 実行
+            pstmt.setInt(1,leagueId);
+            pstmt.setInt(2,leagueId);
+            pstmt.setInt(3,childId);
+            pstmt.setInt(4,leagueId);
+            pstmt.setInt(5,childId);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                MatchBean mb = new MatchBean();
+                mb.setId(rs.getInt("id"));
+                mb.setcort(rs.getInt("cort"));
+                mb.setA(rs.getInt("a"));
+                mb.setB(rs.getInt("b"));
+                mdto.add(mb);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            try {
+                if(rs != null) rs.close();
+                if(pstmt != null) pstmt.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        disconnect();
+        return mdto;
+    }
+
     public int insert(int id, int cort, int a, int b){
         String sql = "INSERT INTO matches VALUES (" + id + ", " + cort + ", " + a + ", " + b + ")";
         return executeSql(sql);
