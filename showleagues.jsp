@@ -52,24 +52,44 @@
                         <td>順位</td>                        
                     </tr>
                 <%  
-                    for(int j=0; j<tdto.size(); j++){
+                    for(int j=0; j<lb.getTeamNum(); j++){
+                        if(j<tdto.size()){
                             TeamBean tb = tdto.get(j);
+                            out.println("<tr>");
+                            out.println("<td>" + tb.getId() + "</td>");
+                            out.println("<td>" + tb.getName() + "</td>");
+                            for(int k=0; k<lb.getTeamNum(); k++){
+                                if(j==k){
+                                    out.println("<td style=\"background-image: linear-gradient(to right top, transparent calc(50% - 0.5px), #999 50%, #999 calc(50% + 0.5px), transparent calc(50% + 1px))\"></td>");
+                                }
+                                else{
+                                    out.println("<td></td>");
+                                }
+                            }
+                            out.println("<td></td>");
+                            out.println("<td></td>");
+                            out.println("<td></td>");
+                            out.println("</tr>");
+                        }
+                        else{
+                            out.println("<tr>");
+                            out.println("<td></td>");
+                            out.println("<td></td>");
+                            for(int k=0; k<lb.getTeamNum(); k++){
+                                if(j==k){
+                                    out.println("<td style=\"background-image: linear-gradient(to right top, transparent calc(50% - 0.5px), #999 50%, #999 calc(50% + 0.5px), transparent calc(50% + 1px))\"></td>");
+                                }
+                                else{
+                                    out.println("<td>　</td>");
+                                }
+                            }
+                            out.println("<td></td>");
+                            out.println("<td></td>");
+                            out.println("<td></td>");
+                            out.println("</tr>");
+                        }
+                    }
                 %>
-                    <tr>
-                            <td><%= tb.getId() %></td>
-                            <td><%= tb.getName() %></td>
-                            <%  for(int k=0; k<lb.getTeamNum(); k++){
-                                    if(j==k){ %>
-                                        <td style="background-image: linear-gradient(to right top, transparent calc(50% - 0.5px), #999 50%, #999 calc(50% + 0.5px), transparent calc(50% + 1px))"></td>
-                                <%  }else{ %>
-                                        <td></td>
-                                <%  } %>
-                            <% } %>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                    </tr>
-                <%  } %>
                 </table><br>
         <% } %>
     </body>
