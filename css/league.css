@@ -1,0 +1,30 @@
+.win {
+    width: 1.5em;
+    height: 1.5em;
+    padding-top: 0px;
+    border: 1px solid black;
+    border-radius: 50%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.league-result table{
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+.league-result td, tr{
+    border: 1px solid;
+}
+
+.league-result td{
+    text-align: center;
+}
+
+.team-id{
+    width: 2em;
+}
+
+.team-name{
+    width: 5em;
+}

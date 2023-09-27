@@ -226,12 +226,55 @@ public class MatchDAO {
         return mrdto;
     }
 
-    public MatchDTO selectWhereLeagueIdAndLeagueChildId(int leagueId, int childId){
+    public MatchAndResultDTO selectMatchesAndResultsWhereMatchId(int matchId){
+        Statement stmt = null;
+        ResultSet rs = null;
+        MatchAndResultDTO mrdto = new MatchAndResultDTO();
+        String sql = "SELECT matches.id, cort, a, b, winner, gamecountA, gamecountB FROM matches LEFT OUTER JOIN results ON matches.id=results.id WHERE matches.Id=" + matchId;
+        try{
+            connect();
+            // ステートメントを生成
+            stmt = con.createStatement();
+            // SQL実行
+            rs = stmt.executeQuery(sql);
+            // 検索結果の処理
+            while (rs.next()) {
+                MatchAndResultBean mrb = new MatchAndResultBean();
+                mrb.setId(rs.getInt("id"));
+                mrb.setcort(rs.getInt("cort"));
+                mrb.setA(rs.getInt("a"));
+                mrb.setB(rs.getInt("b"));
+                mrb.setWinner(rs.getInt("winner"));
+                mrb.setGamecountA(rs.getInt("gamecountA"));
+                mrb.setGamecountB(rs.getInt("gamecountB"));
+                mrdto.add(mrb);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            try{
+                if(rs != null) rs.close();
+                if(stmt != null) stmt.close();
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        disconnect();
+        return mrdto;
+    }
+
+    public MatchDTO selectWhereLeagueIdAndLeagueChildIdab(int leagueId, int childIdA, int childIdB){
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         MatchDTO mdto = new MatchDTO();
         // tests.sql参照
         String sql ="SELECT * FROM matches INNER JOIN match_league_relations ON matches.id = match_league_relations.match_id INNER JOIN leagues ON match_league_relations.league_id = leagues.league_id WHERE leagues.league_id = ? AND a = (SELECT teams.id FROM teams INNER JOIN team_league_relations ON teams.id = team_league_relations.team_id WHERE league_id=? AND team_league_relations.league_child_id=?) AND b = (SELECT teams.id FROM teams INNER JOIN team_league_relations ON teams.id = team_league_relations.team_id WHERE league_id=? AND team_league_relations.league_child_id=?)";
+        /*if(childIdA < childIdB){
+            int tmp;
+            tmp = childIdA;
+            childIdA = childIdB;
+            childIdB = tmp;
+        }*/
         try{
             connect();
             // ステートメントを生成
@@ -239,9 +282,9 @@ public class MatchDAO {
             // SQL 実行
             pstmt.setInt(1,leagueId);
             pstmt.setInt(2,leagueId);
-            pstmt.setInt(3,childId);
+            pstmt.setInt(3,childIdA);
             pstmt.setInt(4,leagueId);
-            pstmt.setInt(5,childId);
+            pstmt.setInt(5,childIdB);
             rs = pstmt.executeQuery();
             while(rs.next()){
                 MatchBean mb = new MatchBean();
